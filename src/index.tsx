@@ -1,6 +1,7 @@
-import { ActionPanel, CopyToClipboardAction, List, OpenInBrowserAction } from '@raycast/api';
+import { ActionPanel, CopyToClipboardAction, List, OpenInBrowserAction, PushAction } from '@raycast/api';
 import { useState, useEffect } from 'react';
 import { search, SearchResult } from './letterboxd/search';
+import { FilmDetail } from './film';
 import { isNil } from './utils/nil';
 
 export default function SearchList() {
@@ -42,6 +43,7 @@ export default function SearchList() {
           icon="video-16"
           actions={
             <ActionPanel>
+              <PushAction title="Show Film Details" target={<FilmDetail url={result.url} />} />
               <OpenInBrowserAction url={result.url} />
               <CopyToClipboardAction title="Copy Letterboxd URL" content={result.url} />
             </ActionPanel>
