@@ -1,7 +1,7 @@
 import { ActionPanel, CopyToClipboardAction, List, OpenInBrowserAction, PushAction } from '@raycast/api';
 import { useState, useEffect } from 'react';
 import { search, SearchResult } from './letterboxd/search';
-import { FilmDetail } from './film';
+import { FilmDetail } from './ui/film_detail';
 import { isNil } from './utils/nil';
 
 export default function SearchList() {

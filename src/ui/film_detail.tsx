@@ -1,7 +1,7 @@
 import { ActionPanel, CopyToClipboardAction, Detail, OpenInBrowserAction } from '@raycast/api';
 import { useEffect, useState } from 'react';
-import { loadfilmDetails, Film } from './letterboxd/film';
-import { isNil, notNil } from './utils/nil';
+import { loadfilmDetails, Film } from '../letterboxd/film';
+import { isNil, notNil } from '../utils/nil';
 
 type Props = {
   url: string;
