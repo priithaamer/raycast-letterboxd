@@ -1,7 +1,7 @@
-import { ActionPanel, CopyToClipboardAction, List, OpenInBrowserAction } from "@raycast/api";
-import { useState, useEffect } from "react";
-import { search, SearchResult } from "./letterboxd/search";
-import { isNil } from "./utils/nil";
+import { ActionPanel, CopyToClipboardAction, List, OpenInBrowserAction } from '@raycast/api';
+import { useState, useEffect } from 'react';
+import { search, SearchResult } from './letterboxd/search';
+import { isNil } from './utils/nil';
 
 export default function SearchList() {
   const [state, setState] = useState<{ searchResult: SearchResult[]; loading: boolean }>({

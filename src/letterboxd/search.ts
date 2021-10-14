@@ -1,6 +1,6 @@
-import fetch from "node-fetch";
-import { isNil, notNil } from "../utils/nil";
-import parse from "node-html-parser";
+import fetch from 'node-fetch';
+import { isNil, notNil } from '../utils/nil';
+import parse from 'node-html-parser';
 
 export type SearchResult = {
   title: string;
@@ -9,10 +9,10 @@ export type SearchResult = {
   director: string;
 };
 
-const BaseUrl = "https://letterboxd.com";
+const BaseUrl = 'https://letterboxd.com';
 
 export const search = async (query: string): Promise<SearchResult[]> => {
-  if (query === "") {
+  if (query === '') {
     return [];
   }
 
@@ -25,19 +25,19 @@ export const parseSearchPageHTML = (html: string): SearchResult[] => {
   const doc = parse(html);
 
   const result = doc
-    .querySelectorAll("ul.results li")
+    .querySelectorAll('ul.results li')
     .map((li) => {
-      const [titleA, yearA] = li.querySelectorAll(".headline-2 a");
+      const [titleA, yearA] = li.querySelectorAll('.headline-2 a');
       const title = titleA?.textContent;
       const year = yearA?.textContent;
 
-      const url = titleA.getAttribute("href");
-      const director = li.querySelector(".film-metadata a")?.textContent ?? "";
+      const url = titleA.getAttribute('href');
+      const director = li.querySelector('.film-metadata a')?.textContent ?? '';
 
       if (isNil(title) || isNil(url) || isNil(year)) {
         return null;
       }
-      return { title, url: [BaseUrl, url].join(""), year, director };
+      return { title, url: [BaseUrl, url].join(''), year, director };
     })
     .filter(notNil);
 
